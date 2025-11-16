@@ -1,6 +1,6 @@
 import "./CardProducto.css";
 import { useState } from "react";
-import { obtenerImagen } from "../../../helpers/importarImagenes";
+import { obtenerImagen } from "../../../../helpers/importarImagenes";
 
 const ImagenProducto = ({ src, alt }) => {
   const [error, setError] = useState(false);

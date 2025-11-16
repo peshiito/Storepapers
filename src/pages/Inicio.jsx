@@ -1,16 +1,16 @@
 import Header from "../common/header/Header";
-import Hero from "../components/Inicio/Hero/Hero";
+import Hero from "../components/InicioV2/hero/Hero";
 import Infor from "../components/Inicio/Infor/Infor";
 import Footer from "../common/footer/Footer";
-import ProductosDestacados from "../components/Inicio/ProductosDesatacados/ProductosDestacados";
+import ProductosContainer from "../components/InicioV2/Productos/ProductosContainer/ProductosContainer";
 
 function Inicio() {
   return (
     <div>
       <Header />
       <Hero />
+      <ProductosContainer />
       <Infor />
-      <ProductosDestacados />
       <Footer />
     </div>
   );
