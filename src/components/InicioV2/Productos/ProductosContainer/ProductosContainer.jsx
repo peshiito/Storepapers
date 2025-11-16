@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { traerProductos } from "../../../helpers/traerProductos";
+import { traerProductos } from "../../../../helpers/traerProductos";
 import CardProducto from "../CardProducto/CardProducto";
 import "./ProductosContainer.css";
 
