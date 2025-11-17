@@ -1,6 +1,6 @@
 import Header from "../common/header/Header";
 import Hero from "../components/InicioV2/hero/Hero";
-import Infor from "../components/Inicio/Infor/Infor";
+import Infor from "../components/InicioV2/Infor/Infor";
 import Footer from "../common/footer/Footer";
 import ProductosContainer from "../components/InicioV2/Productos/ProductosContainer/ProductosContainer";
 
