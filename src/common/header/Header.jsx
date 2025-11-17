@@ -38,7 +38,7 @@ function Header() {
 
           <li className={isActive("/productos") ? "active" : ""}>
             <Link to="/productos" onClick={closeMenu}>
-              Productos
+              Pedido
             </Link>
           </li>
 
