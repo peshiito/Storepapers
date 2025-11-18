@@ -1,0 +1,275 @@
+:root {
+  --fondo-principal: #e8e0d0;
+  --verde-oscuro: #1a5a35;
+  --rojo-acento: #b83a2d;
+  --fondo-card: #f5f0e5;
+  --borde-sutil: rgba(26, 90, 53, 0.15);
+  --texto-principal: #1a5a35;
+  --texto-secundario: #598e75;
+  --hover-claro: #ddd6c8;
+  --hover-oscuro: #0f391e;
+  --sombra-suave: 0 8px 32px rgba(26, 90, 53, 0.08);
+  --sombra-intensa: 0 12px 40px rgba(26, 90, 53, 0.12);
+}
+
+.cart-button {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--hover-oscuro));
+  border: 2px solid var(--fondo-card);
+  border-radius: 50px;
+  width: auto;
+  min-width: 70px;
+  height: 70px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--sombra-intensa);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: var(--fondo-card);
+  font-weight: 600;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.cart-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cart-button:hover::before {
+  left: 100%;
+}
+
+.cart-button:hover {
+  background: linear-gradient(135deg, var(--hover-oscuro), var(--verde-oscuro));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(26, 90, 53, 0.25);
+  padding: 0 25px;
+}
+
+.cart-button:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+/* Estado cuando el carrito tiene items */
+.cart-button.has-items {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(184, 58, 45, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(184, 58, 45, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(184, 58, 45, 0);
+  }
+}
+
+.cart-emoji {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.cart-button:hover .cart-emoji {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.cart-sum {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+}
+
+.cart-items-count {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Badge mejorado */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: linear-gradient(135deg, var(--rojo-acento), #a02c20);
+  color: var(--fondo-card);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--fondo-card);
+  box-shadow: 0 3px 10px rgba(184, 58, 45, 0.3);
+  transition: all 0.3s ease;
+  animation: bounce 0.5s ease;
+}
+
+.cart-button:hover .cart-badge {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 5px 15px rgba(184, 58, 45, 0.4);
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  80% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Estado vacío */
+.cart-button.empty {
+  background: linear-gradient(135deg, var(--texto-secundario), #4a7a62);
+  opacity: 0.9;
+}
+
+.cart-button.empty:hover {
+  background: linear-gradient(135deg, #4a7a62, var(--texto-secundario));
+  opacity: 1;
+}
+
+/* Efecto de notificación */
+.cart-button.new-item {
+  animation: celebrate 0.6s ease;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Versión compacta para móviles */
+@media (max-width: 768px) {
+  .cart-button {
+    top: 16px;
+    right: 16px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 1rem;
+    padding: 0 16px;
+    border-width: 1.5px;
+  }
+
+  .cart-button:hover {
+    padding: 0 20px;
+  }
+
+  .cart-emoji {
+    font-size: 1.2rem;
+  }
+
+  .cart-info {
+    gap: 1px;
+  }
+
+  .cart-sum {
+    font-size: 0.75rem;
+  }
+
+  .cart-items-count {
+    font-size: 0.65rem;
+  }
+
+  .cart-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+/* Versión ultra compacta para móviles pequeños */
+@media (max-width: 480px) {
+  .cart-button {
+    min-width: 55px;
+    height: 55px;
+    padding: 0 12px;
+  }
+
+  .cart-info {
+    display: none; /* Ocultamos el texto en móviles muy pequeños */
+  }
+
+  .cart-button:hover .cart-info {
+    display: flex; /* Mostramos al hover */
+    position: absolute;
+    background: var(--verde-oscuro);
+    padding: 8px 12px;
+    border-radius: 8px;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+}
+
+/* Modo de accesibilidad - reduce animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .cart-button {
+    transition: none;
+  }
+  
+  .cart-button::before {
+    display: none;
+  }
+  
+  .cart-button:hover {
+    transform: none;
+  }
+  
+  .cart-badge {
+    animation: none;
+  }
+  
+  .cart-button.has-items {
+    animation: none;
+  }
+}
