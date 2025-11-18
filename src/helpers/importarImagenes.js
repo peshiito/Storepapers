@@ -1,19 +1,22 @@
-// Importa TODAS las imágenes de la carpeta Productos automáticamente
-const imagenes = import.meta.glob("../data/Productos/*", { eager: true });
+// helpers/importarImagenes.js
+// Carga automática de imágenes ubicadas en: src/components/data/productos/
 
-export const obtenerImagen = (rutaJSON) => {
-  if (!rutaJSON) return null;
+const imagenes = import.meta.glob(
+  "/src/data/Productos/*.{png,jpg,jpeg,webp,avif}",
+  { eager: true }
+);
 
-  // Extrae solo el nombre del archivo desde el JSON
-  const nombre = rutaJSON.split("/").pop();
+// Convierte los imports en un objeto { "archivo.jpg": url }
+const images = {};
+for (const path in imagenes) {
+  const fileName = path.split("/").pop();
+  images[fileName] = imagenes[path].default;
+}
 
-  // Busca dentro de las rutas importadas por Vite
-  for (const ruta in imagenes) {
-    if (ruta.includes(nombre)) {
-      return imagenes[ruta].default;
-    }
-  }
-
-  console.warn("Imagen no encontrada:", nombre);
-  return null;
+// Devuelve la URL de la imagen según el nombre de archivo
+export const obtenerImagen = (nombreArchivo) => {
+  if (!nombreArchivo) return null;
+  return images[nombreArchivo] || null;
 };
+
+export default images;

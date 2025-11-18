@@ -17,6 +17,7 @@ body {
 /* ===== VARIABLES ===== */
 :root {
   --bg-header: rgba(220, 201, 169, 0.9);
+  /* ELIMINAR ESTA LINEA: --logo-bg: #dcc9a9; */
   --verde: #4e6851;
   --rojo: #b83a2d;
   --hover-verde-claro: #6fa47b;
@@ -44,7 +45,6 @@ body {
   z-index: 1000;
   transition: var(--transition);
   min-height: 70px;
-  overflow: visible;
 }
 
 /* ===== LOGO - ESTILOS PARA TEXTO SIN FONDO EXTERNO ===== */
@@ -91,62 +91,6 @@ body {
   display: none;
 }
 
-/* ===== CONTROLES MÓVILES (HAMBURGUESA Y CARRITO) ===== */
-.mobile-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* ===== BOTÓN CARRITO MÓVIL ===== */
-.carrito-btn {
-  background: var(--verde);
-  border: none;
-  border-radius: 10px;
-  padding: 0.6rem;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-}
-
-.carrito-icon {
-  font-size: 1.2rem;
-  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
-}
-
-.carrito-contador {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: var(--rojo);
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--bg-header);
-}
-
-/* Hover effects para carrito */
-.carrito-btn:hover {
-  background: var(--hover-verde-claro);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.carrito-btn:hover .carrito-icon {
-  transform: scale(1.1);
-}
-
 /* ===== NAV LIST ===== */
 .listas ul {
   list-style: none;
@@ -179,45 +123,6 @@ body {
   line-height: 1;
 }
 
-/* ===== CARRITO EN VERSIÓN DESKTOP (DENTRO DEL NAV) ===== */
-.carrito-desktop-item {
-  display: none; /* Oculto por defecto, se muestra en desktop */
-  background-color: var(--verde) !important;
-  padding: 0.5rem 1rem !important;
-  margin: 0 !important;
-}
-
-.carrito-desktop-btn {
-  background: none;
-  border: none;
-  color: var(--rojo);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--transition);
-  width: 100%;
-  height: 100%;
-  font-family: inherit;
-}
-
-.carrito-contador-desktop {
-  background: var(--rojo);
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 0.2rem;
-}
-
 /* ===== HOVER NUEVO (MEJOR CONTRASTE) ===== */
 .listas li:hover {
   background-color: var(--hover-verde-claro);
@@ -228,16 +133,6 @@ body {
 
 .listas li:hover a {
   color: #ffffff;
-}
-
-/* Hover específico para carrito desktop */
-.carrito-desktop-item:hover {
-  background-color: var(--hover-verde-claro) !important;
-  border-color: var(--hover-verde-oscuro) !important;
-}
-
-.carrito-desktop-item:hover .carrito-desktop-btn {
-  color: #ffffff !important;
 }
 
 /* ===== ESTADO ACTIVO CORREGIDO ===== */
@@ -299,29 +194,8 @@ body {
     top: 10px;
   }
 
-  .mobile-controls {
-    display: flex;
-    gap: 0.8rem;
-  }
-
   .hamburger {
     display: flex;
-  }
-
-  .carrito-btn {
-    width: 40px;
-    height: 40px;
-    padding: 0.5rem;
-  }
-
-  .carrito-icon {
-    font-size: 1.1rem;
-  }
-
-  .carrito-contador {
-    width: 18px;
-    height: 18px;
-    font-size: 0.65rem;
   }
 
   .listas {
@@ -362,11 +236,6 @@ body {
     padding: 0.5rem 0;
   }
 
-  /* Ocultar carrito del nav en móvil */
-  .carrito-desktop-item {
-    display: none !important;
-  }
-
   .logo_container {
     height: 40px;
   }
@@ -380,46 +249,11 @@ body {
   }
 }
 
-/* ===== DESKTOP ===== */
-@media (min-width: 769px) {
-  /* Ocultar controles móviles en desktop */
-  .mobile-controls {
-    display: none;
-  }
-
-  /* Mostrar carrito en el nav para desktop */
-  .carrito-desktop-item {
-    display: block !important;
-  }
-}
-
 /* ===== EXTRA SMALL DEVICES ===== */
 @media (max-width: 480px) {
   .header_container {
     min-height: 60px;
     padding: 0.4rem 0.8rem;
-  }
-
-  .mobile-controls {
-    gap: 0.6rem;
-  }
-
-  .carrito-btn {
-    width: 36px;
-    height: 36px;
-    padding: 0.4rem;
-  }
-
-  .carrito-icon {
-    font-size: 1rem;
-  }
-
-  .carrito-contador {
-    width: 16px;
-    height: 16px;
-    font-size: 0.6rem;
-    top: -4px;
-    right: -4px;
   }
 
   .logo_container {

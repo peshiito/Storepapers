@@ -4,37 +4,37 @@
       "nombre": "Papel fotográfico 200 grs 100 hojas",
       "cantidad": 2,
       "precio_unitario": 11900,
-      "imagen": "/productos/100_hojas_papel_fotografico.jpg"
+      "imagen": "100_hojas_papel_fotografico.jpg"
     },
     {
       "nombre": "Papel fotográfico 200 grs 20 hojas",
       "cantidad": 6,
       "precio_unitario": 2980,
-      "imagen": "/productos/20_hojas_papel_fotografico.jpg"
+      "imagen": "20_hojas_papel_fotografico.jpg"
     },
     {
       "nombre": "Papel adhesivo 115 grs 100 hojas",
       "cantidad": 2,
       "precio_unitario": 19620,
-      "imagen": "/productos/100_hojas_papel_adhesivo.jpg"
+      "imagen": "100_hojas_papel_adhesivo.jpg"
     },
     {
       "nombre": "Papel adhesivo 115 grs 20 hojas",
       "cantidad": 3,
       "precio_unitario": 6080,
-      "imagen": "/productos/20_hojas_papel_adhesivo.jpg"
+      "imagen": "20_hojas_papel_adhesivo.jpg"
     },
     {
       "nombre": "Holofan efecto mundo tornasol",
       "cantidad": 3,
       "precio_unitario": 10800,
-      "imagen": "/productos/holofan_efecto_tornasol_20hojas.jpg"
+      "imagen": "holofan_efecto_tornasol_20hojas.jpg"
     },
     {
       "nombre": "Holofan efecto lluvia de diamantes",
       "cantidad": 3,
       "precio_unitario": 10800,
-      "imagen": "/productos/holofan_efecto_lluvia_de_diamantes_20hojas.jpg"
+      "imagen": "holofan_efecto_lluvia_de_diamantes_20hojas.jpg"
     }
   ]
 }
