@@ -8,7 +8,13 @@ const CartSlider = ({ visible, onClose }) => {
   if (!visible) return null;
 
   const handleWhatsApp = () => {
-    sendWhatsApp("", "Hola, quiero hacer un pedido:");
+    // Ahora no necesita parámetros, usa el número fijo
+    sendWhatsApp("Hola, quiero hacer un pedido:");
+    
+    // Opcional: Cerrar el carrito después de enviar
+    setTimeout(() => {
+      onClose();
+    }, 1000);
   };
 
   const handleContinueShopping = () => {
@@ -96,7 +102,7 @@ const CartSlider = ({ visible, onClose }) => {
                     className="checkout-btn"
                     onClick={handleWhatsApp}
                   >
-                    📱 Enviar por WhatsApp
+                    📱 Enviar pedido por WhatsApp
                   </button>
                   
                   <button 

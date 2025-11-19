@@ -91,13 +91,14 @@ export const CartProvider = ({ children }) => {
     return `${header}\n${lines.join("\n\n")}${footer}`;
   };
 
-  const sendWhatsApp = (phone = "", prefix = "Hola, quiero hacer un pedido:") => {
+  const sendWhatsApp = (prefix = "Hola, quiero hacer un pedido:") => {
     const text = buildWhatsAppText(prefix);
     const encoded = encodeURIComponent(text);
-    const base = phone ? 
-      `https://api.whatsapp.com/send?phone=${phone}&text=${encoded}` : 
-      `https://api.whatsapp.com/send?text=${encoded}`;
-    window.open(base, "_blank");
+    // Número completo con código de país: +54 9 11 5564-8450
+    // Para WhatsApp, quitamos espacios, guiones y el + se reemplaza por %2B
+    const phoneNumber = "5491155648450"; // +54 9 11 5564-8450 sin espacios ni símbolos
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encoded}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
