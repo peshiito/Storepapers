@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useCart } from "../../Cart/CartContext/CartContext";
 import "./CardProducto.css";
 
 const CardProducto = ({ productos = [], onAgregarCarrito }) => {
+  const { formatPrice } = useCart();
+
   return (
     <div className="cards-grid">
       {productos.map((p) => {
@@ -13,6 +16,7 @@ const CardProducto = ({ productos = [], onAgregarCarrito }) => {
             price={p.price}
             image={p.image}
             onAgregarCarrito={onAgregarCarrito}
+            formatPrice={formatPrice}
           />
         );
       })}
@@ -20,7 +24,14 @@ const CardProducto = ({ productos = [], onAgregarCarrito }) => {
   );
 };
 
-const ProductoCard = ({ producto, title, price, image, onAgregarCarrito }) => {
+const ProductoCard = ({
+  producto,
+  title,
+  price,
+  image,
+  onAgregarCarrito,
+  formatPrice,
+}) => {
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -29,7 +40,7 @@ const ProductoCard = ({ producto, title, price, image, onAgregarCarrito }) => {
   const handleAdd = async () => {
     if (typeof onAgregarCarrito === "function") {
       setAdding(true);
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise((resolve) => setTimeout(resolve, 300));
       onAgregarCarrito(producto, Number(qty) || 1);
       setQty(1);
       setAdding(false);
@@ -47,8 +58,8 @@ const ProductoCard = ({ producto, title, price, image, onAgregarCarrito }) => {
     setImgError(false);
   };
 
-  const incrementQty = () => setQty(prev => prev + 1);
-  const decrementQty = () => setQty(prev => Math.max(1, prev - 1));
+  const incrementQty = () => setQty((prev) => prev + 1);
+  const decrementQty = () => setQty((prev) => Math.max(1, prev - 1));
 
   return (
     <article className="product-card">
@@ -66,7 +77,7 @@ const ProductoCard = ({ producto, title, price, image, onAgregarCarrito }) => {
               className="card-image"
               onError={handleImageError}
               onLoad={handleImageLoad}
-              style={{ display: imgLoading ? 'none' : 'block' }}
+              style={{ display: imgLoading ? "none" : "block" }}
             />
           </>
         ) : (
@@ -74,45 +85,40 @@ const ProductoCard = ({ producto, title, price, image, onAgregarCarrito }) => {
             📦<span>Imagen no disponible</span>
           </div>
         )}
-        
-        <div className="card-price">
-          ${price.toLocaleString('es-ES')}
-        </div>
-        
+
+        <div className="card-price">${formatPrice(price)}</div>
+
         <div className="card-overlay">
-          <button 
-            className={`add-button ${adding ? 'adding' : ''}`}
+          <button
+            className={`add-button ${adding ? "adding" : ""}`}
             onClick={handleAdd}
             disabled={adding}
           >
-            {adding ? '✓' : '🛒'}
+            {adding ? "✓" : "🛒"}
           </button>
         </div>
       </div>
 
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
-        
+
         <div className="card-actions">
           <div className="quantity-selector">
-            <button 
-              className="qty-btn minus" 
+            <button
+              className="qty-btn minus"
               onClick={decrementQty}
               disabled={qty <= 1}
             >
               -
             </button>
             <span className="qty-display">{qty}</span>
-            <button 
-              className="qty-btn plus" 
-              onClick={incrementQty}
-            >
+            <button className="qty-btn plus" onClick={incrementQty}>
               +
             </button>
           </div>
-          
+
           <button
-            className={`add-to-cart-btn ${adding ? 'adding' : ''}`}
+            className={`add-to-cart-btn ${adding ? "adding" : ""}`}
             onClick={handleAdd}
             disabled={adding}
           >

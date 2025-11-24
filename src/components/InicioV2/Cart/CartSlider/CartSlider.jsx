@@ -3,15 +3,22 @@ import { useCart } from "../CartContext/CartContext";
 import "./CartSlider.css";
 
 const CartSlider = ({ visible, onClose }) => {
-  const { cart, updateQuantity, removeFromCart, getTotal, sendWhatsApp, clearCart } = useCart();
+  const {
+    cart,
+    updateQuantity,
+    removeFromCart,
+    getTotal,
+    sendWhatsApp,
+    clearCart,
+    formatPrice,
+    formatPriceWithDecimals,
+  } = useCart();
 
   if (!visible) return null;
 
   const handleWhatsApp = () => {
-    // Ahora no necesita parámetros, usa el número fijo
     sendWhatsApp("Hola, quiero hacer un pedido:");
-    
-    // Opcional: Cerrar el carrito después de enviar
+
     setTimeout(() => {
       onClose();
     }, 1000);
@@ -27,7 +34,11 @@ const CartSlider = ({ visible, onClose }) => {
       <aside className="cart-slider">
         <div className="cart-header">
           <h2>Tu Carrito</h2>
-          <button className="close-btn" onClick={onClose} aria-label="Cerrar carrito">
+          <button
+            className="close-btn"
+            onClick={onClose}
+            aria-label="Cerrar carrito"
+          >
             ✕
           </button>
         </div>
@@ -41,46 +52,55 @@ const CartSlider = ({ visible, onClose }) => {
             <>
               <div className="cart-items">
                 {cart.map((item) => {
-                  const subtotal = (Number(item.price || 0) * Number(item.quantity || 0)).toFixed(2);
+                  const subtotal =
+                    Number(item.price || 0) * Number(item.quantity || 0);
                   return (
                     <div key={item.id} className="cart-item">
                       {item.image ? (
-                        <img 
-                          src={item.image} 
-                          alt={item.title} 
+                        <img
+                          src={item.image}
+                          alt={item.title}
                           className="item-image"
                           onError={(e) => {
-                            e.target.style.display = 'none';
+                            e.target.style.display = "none";
                           }}
                         />
                       ) : (
                         <div className="item-image placeholder">📦</div>
                       )}
-                      
+
                       <div className="item-details">
                         <h4>{item.title}</h4>
-                        <p className="item-price">${Number(item.price || 0).toFixed(2)} c/u</p>
-                        
+                        <p className="item-price">
+                          ${formatPrice(Number(item.price || 0))} c/u
+                        </p>
+
                         <div className="quantity-controls">
-                          <button 
+                          <button
                             className="quantity-btn"
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity - 1)
+                            }
                           >
                             -
                           </button>
                           <span className="quantity">{item.quantity}</span>
-                          <button 
+                          <button
                             className="quantity-btn"
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity + 1)
+                            }
                           >
                             +
                           </button>
                         </div>
-                        
-                        <p className="item-subtotal">Subtotal: ${subtotal}</p>
+
+                        <p className="item-subtotal">
+                          Subtotal: ${formatPrice(subtotal)}
+                        </p>
                       </div>
-                      
-                      <button 
+
+                      <button
                         className="remove-btn"
                         onClick={() => removeFromCart(item.id)}
                         aria-label="Eliminar producto"
@@ -94,25 +114,19 @@ const CartSlider = ({ visible, onClose }) => {
 
               <div className="cart-footer">
                 <div className="cart-total">
-                  Total: <strong>${getTotal().toFixed(2)}</strong>
+                  Total: <strong>${formatPrice(getTotal())}</strong>
                 </div>
-                
+
                 <div className="cart-actions">
-                  <button 
-                    className="checkout-btn"
-                    onClick={handleWhatsApp}
-                  >
+                  <button className="checkout-btn" onClick={handleWhatsApp}>
                     📱 Enviar pedido por WhatsApp
                   </button>
-                  
-                  <button 
-                    className="clear-cart-btn"
-                    onClick={clearCart}
-                  >
+
+                  <button className="clear-cart-btn" onClick={clearCart}>
                     🗑️ Vaciar Carrito
                   </button>
-                  
-                  <button 
+
+                  <button
                     className="continue-btn"
                     onClick={handleContinueShopping}
                   >
