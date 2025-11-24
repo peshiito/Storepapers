@@ -35,6 +35,72 @@
       "cantidad": 3,
       "precio_unitario": 10800,
       "imagen": "holofan_efecto_lluvia_de_diamantes_20hojas.jpg"
+    },
+    {
+      "nombre": "Tatufan",
+      "cantidad": 3,
+      "precio_unitario": 24900,
+      "imagen": "tatufan.jpg"
+    },
+    {
+      "nombre": "Magnetico Brillante",
+      "cantidad": 3,
+      "precio_unitario": 17900,
+      "imagen": "papelMagnetico.jpg"
+    },
+    {
+      "nombre": "Canvas 50 hojas tejido de lana 230gr",
+      "cantidad": 3,
+      "precio_unitario": 11900,
+      "imagen": "Canvas_50_hojas_tejido_lana_230gr.png"
+    },
+    {
+      "nombre": "100 hojas de Matelina adhesiva 108gr",
+      "cantidad": 3,
+      "precio_unitario": 18900,
+      "imagen": "100HojasMatelinaAdhesiva.jpeg"
+    },
+    {
+      "nombre": "Matelina bi faz 260gr 50 hojas",
+      "cantidad": 3,
+      "precio_unitario": 10900,
+      "imagen": "100HojasMatelinaAdhesiva.jpeg"
+    },
+    {
+      "nombre": "Filmilo adhesivo blanco reluciente a4",
+      "cantidad": 3,
+      "precio_unitario": 10200,
+      "imagen": "Filmilo_adhesivo_blanco_reluciente_a4"
+    },
+    {
+      "nombre": "Filmilo adhesivo oro antiguo a4",
+      "cantidad": 3,
+      "precio_unitario": 10900,
+      "imagen": "Filmilo_adhesivo_oro_antiguo_a4"
+    },
+    {
+      "nombre": "Papel winky blanco a4",
+      "cantidad": 3,
+      "precio_unitario": 14900,
+      "imagen": "Papel_winky_blanco_a4"
+    },
+    {
+      "nombre": "Holofan noche estrellada",
+      "cantidad": 3,
+      "precio_unitario": 10800,
+      "imagen": "Holofan_noche_estrellada"
+    },
+    {
+      "nombre": "Holofan efecto rafaga de amor",
+      "cantidad": 3,
+      "precio_unitario": 10800,
+      "imagen": "Holofan_efecto_rafaga_amor.png"
+    },
+    {
+      "nombre": "100 Hojas papel fotografico brillante de 160gr",
+      "cantidad": 3,
+      "precio_unitario": 14900,
+      "imagen": "100_Hojas_papel_fotografico_brillante_160gr.webp"
     }
   ]
 }
