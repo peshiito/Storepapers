@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../Cart/CartContext/CartContext";
 import { traerProductos } from "../../../../helpers/traerProductos";
-import { obtenerImagen } from "../../../../helpers/importarImagenes"; 
+import { obtenerImagen } from "../../../../helpers/importarImagenes";
 import CardProducto from "../CardProducto/CardProducto";
 import "./ProductosContainer.css";
 
@@ -13,6 +13,14 @@ const ProductosContainer = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("nombre");
+
+  // Función para formatear precios con separadores de miles
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat("es-AR", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
 
   const cargarProductos = async () => {
     try {
@@ -43,14 +51,13 @@ const ProductosContainer = () => {
           price: Number(p.precio_unitario || p.precio || 0),
           image: imagenCargada, // <-- 👍 IMAGEN CARGADA AUTOMÁTICAMENTE
           raw: p,
-          category: p.categoria || "general"
+          category: p.categoria || "general",
         };
       });
 
       console.log("🎉 Todos los productos normalizados:", normalized);
       setProductos(normalized);
       setProductosFiltrados(normalized);
-
     } catch (err) {
       console.error("❌ Error cargando productos:", err);
       setError("No se pudieron cargar los productos. Intenta nuevamente.");
@@ -66,7 +73,7 @@ const ProductosContainer = () => {
     let filtered = [...productos];
 
     if (searchTerm) {
-      filtered = filtered.filter(producto =>
+      filtered = filtered.filter((producto) =>
         producto.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -94,6 +101,10 @@ const ProductosContainer = () => {
     console.log("🛒 Agregando al carrito:", producto, "cantidad:", qty);
     addToCart(producto, qty);
   };
+
+  // Calcular estadísticas
+  const precioMinimo =
+    productos.length > 0 ? Math.min(...productos.map((p) => p.price)) : 0;
 
   // ─────────────────────────────────────────────
   // LOADING
@@ -134,11 +145,11 @@ const ProductosContainer = () => {
   return (
     <div className="productos-main-container">
       <div className="productos-content">
-
         <div className="productos-header">
           <h2 className="productos-title">Nuestros Productos</h2>
           <p className="productos-subtitle">
-            Descubre nuestra selección premium de materiales de impresión y papelería especializada
+            Descubre nuestra selección premium de materiales de impresión y
+            papelería especializada
           </p>
         </div>
 
@@ -150,14 +161,12 @@ const ProductosContainer = () => {
           </div>
           <div className="stat-item">
             <span className="stat-number">
-              {new Set(productos.map(p => p.category)).size}
+              {new Set(productos.map((p) => p.category)).size}
             </span>
             <span className="stat-label">Categorías</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number">
-              ${Math.min(...productos.map(p => p.price)).toLocaleString('es-ES')}
-            </span>
+            <span className="stat-number">${formatPrice(precioMinimo)}</span>
             <span className="stat-label">Desde</span>
           </div>
         </div>
@@ -166,7 +175,7 @@ const ProductosContainer = () => {
         <div className="productos-filters">
           <div className="filter-group">
             <span className="filter-label">Ordenar por:</span>
-            <select 
+            <select
               className="filter-select"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
@@ -196,13 +205,12 @@ const ProductosContainer = () => {
               <div className="empty-icon">🔍</div>
               <h3 className="empty-title">No se encontraron productos</h3>
               <p className="empty-message">
-                {searchTerm 
+                {searchTerm
                   ? `No hay productos que coincidan con "${searchTerm}"`
-                  : "No hay productos disponibles en este momento"
-                }
+                  : "No hay productos disponibles en este momento"}
               </p>
               {searchTerm && (
-                <button 
+                <button
                   className="retry-button"
                   onClick={() => setSearchTerm("")}
                 >
@@ -212,14 +220,15 @@ const ProductosContainer = () => {
             </div>
           ) : (
             <>
-              <CardProducto 
-                productos={productosFiltrados} 
-                onAgregarCarrito={handleAgregarCarrito} 
+              <CardProducto
+                productos={productosFiltrados}
+                onAgregarCarrito={handleAgregarCarrito}
               />
-              
+
               <div className="productos-footer">
                 <p className="footer-text">
-                  Mostrando {productosFiltrados.length} de {productos.length} productos
+                  Mostrando {productosFiltrados.length} de {productos.length}{" "}
+                  productos
                   {searchTerm && ` para "${searchTerm}"`}
                 </p>
               </div>
