@@ -58,13 +58,13 @@ export const traerProductos = async () => {
           nombre: "Canvas 50 hojas tejido de lana 230gr",
           cantidad: 3,
           precio_unitario: 11900,
-          imagen: "Canvas_50_hojas tejido_lana_230gr.png",
+          imagen: "Canvas_50_hojas tejido_lana_230gr.webp",
         },
         {
           nombre: "100 hojas de Matelina adhesiva 108gr",
           cantidad: 3,
           precio_unitario: 18900,
-          imagen: "100HojasMatelinaAdhesiva.jpeg",
+          imagen: "Matelina_Adhesivo_108g.webp",
         },
         {
           nombre: "Matelina bi faz 260gr 50 hojas",
@@ -76,7 +76,7 @@ export const traerProductos = async () => {
           nombre: "Filmilo adhesivo blanco reluciente a4",
           cantidad: 3,
           precio_unitario: 10200,
-          imagen: "Filmilo_adhesivo_blanco_reluciente_a4.jpg",
+          imagen: "Filmilo_adhesivo_blanco_reluciente_a4.webp",
         },
         {
           nombre: "Filmilo adhesivo oro antiguo a4",
@@ -107,6 +107,19 @@ export const traerProductos = async () => {
           cantidad: 3,
           precio_unitario: 14900,
           imagen: "100_Hojas_papel_fotografico_brillante_160gr.webp",
+        },
+        {
+          nombre: "100 Hojas Tricapa Para Sublimar de 100gr",
+          cantidad: 3,
+          precio_unitario: 10400,
+          imagen: "Sublimar_Tricapa_100hojas.webp",
+        },
+
+        {
+          nombre: "100 Hojas Papel Fotografico Brillante 200grs",
+          cantidad: 3,
+          precio_unitario: 11500,
+          imagen: "Papel_fotografico_Brillante_100hojas.webp",
         },
       ],
     };
