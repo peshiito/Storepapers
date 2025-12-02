@@ -127,7 +127,7 @@ export const CartProvider = ({ children }) => {
   const sendWhatsApp = (prefix = "Hola, quiero hacer un pedido:") => {
     const text = buildWhatsAppText(prefix);
     const encoded = encodeURIComponent(text);
-    const phoneNumber = "5491155648450";
+    const phoneNumber = "5491128947318";
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encoded}`;
     window.open(whatsappUrl, "_blank");
   };

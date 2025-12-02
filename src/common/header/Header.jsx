@@ -10,6 +10,21 @@ function Header() {
 
   const isActive = (path) => location.pathname === path;
 
+  // Función para navegar a la sección de contacto
+  const scrollToContact = () => {
+    closeMenu();
+    // Si estamos en la página de inicio, hacer scroll a contacto
+    if (location.pathname === "/") {
+      const contactSection = document.getElementById("contact-section");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Si estamos en otra página, navegar al inicio y luego hacer scroll
+      window.location.href = "/#contact-section";
+    }
+  };
+
   return (
     <header className="header_container">
       <div className="logo_container">
@@ -36,16 +51,18 @@ function Header() {
             </Link>
           </li>
 
-          <li className={isActive("/productos") ? "active" : ""}>
-            <Link to="/productos" onClick={closeMenu}>
-              Pedido
+          {/* Opción 1: Navegar a página de contacto separada */}
+          <li className={isActive("/contact") ? "active" : ""}>
+            <Link to="/contact" onClick={closeMenu}>
+              Contacto
             </Link>
           </li>
 
-          <li className={isActive("/contacto") ? "active" : ""}>
-            <Link to="/contacto" onClick={closeMenu}>
-              Contacto
-            </Link>
+          {/* Opción 2: Scroll a sección de contacto en la misma página */}
+          <li>
+            <button className="contact-link-button" onClick={scrollToContact}>
+              Contáctanos
+            </button>
           </li>
         </ul>
       </nav>
