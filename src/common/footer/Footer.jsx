@@ -25,8 +25,7 @@ function Footer() {
   ];
 
   const contactInfo = [
-    { icon: "📱", text: "+54 9 11 5564-8450" },
-    { icon: "📧", text: "pedrogbaez1@gmail.com" },
+    { icon: "📱", text: "+54 9 11 2894-7318" },
     { icon: "📍", text: "Moreno, Buenos Aires" },
     { icon: "🕒", text: "Lun-Vie: 9:00 - 18:00" },
   ];

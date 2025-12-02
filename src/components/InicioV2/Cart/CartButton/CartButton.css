@@ -38,13 +38,18 @@
 }
 
 .cart-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -140,7 +145,10 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 60%, 100% {
+  0%,
+  20%,
+  60%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -185,24 +193,28 @@
   }
 }
 
-/* Versión compacta para móviles */
+/* VERSIÓN MÓVIL - BOTÓN INFERIOR */
 @media (max-width: 768px) {
   .cart-button {
-    top: 16px;
-    right: 16px;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
     min-width: 60px;
     height: 60px;
     font-size: 1rem;
     padding: 0 16px;
     border-width: 1.5px;
+    border-radius: 30px;
+    box-shadow: 0 6px 25px rgba(26, 90, 53, 0.25);
   }
 
   .cart-button:hover {
     padding: 0 20px;
+    transform: translateY(-3px) scale(1.05);
   }
 
   .cart-emoji {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .cart-info {
@@ -229,13 +241,16 @@
 /* Versión ultra compacta para móviles pequeños */
 @media (max-width: 480px) {
   .cart-button {
+    bottom: 16px;
+    right: 16px;
     min-width: 55px;
     height: 55px;
     padding: 0 12px;
+    border-radius: 28px;
   }
 
   .cart-info {
-    display: none; /* Ocultamos el texto en móviles muy pequeños */
+    display: none; /* Ocultamos el texto en móviles pequeños */
   }
 
   .cart-button:hover .cart-info {
@@ -244,10 +259,39 @@
     background: var(--verde-oscuro);
     padding: 8px 12px;
     border-radius: 8px;
-    top: 100%;
+    bottom: 100%; /* Aparece arriba del botón */
     right: 0;
-    margin-top: 8px;
+    margin-bottom: 8px;
     white-space: nowrap;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .cart-emoji {
+    font-size: 1.2rem;
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 360px) */
+@media (max-width: 360px) {
+  .cart-button {
+    min-width: 50px;
+    height: 50px;
+    bottom: 12px;
+    right: 12px;
+    padding: 0 8px;
+  }
+
+  .cart-emoji {
+    font-size: 1.1rem;
+  }
+
+  .cart-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+    top: -3px;
+    right: -3px;
   }
 }
 
@@ -256,19 +300,19 @@
   .cart-button {
     transition: none;
   }
-  
+
   .cart-button::before {
     display: none;
   }
-  
+
   .cart-button:hover {
     transform: none;
   }
-  
+
   .cart-badge {
     animation: none;
   }
-  
+
   .cart-button.has-items {
     animation: none;
   }
