@@ -31,6 +31,27 @@ export const traerProductos = async () => {
           imagen: "Papel_fotografico_Brillante_100hojas.webp",
         },
 
+        {
+          id: "A5",
+          nombre: "100 Hojas Papel Fotografico 120grs",
+          precio_unitario: 9600,
+          imagen: "Papel_fotografico_120gr_100hojas.webp",
+        },
+
+        {
+          id: "A6",
+          nombre: "100 Hojas Papel Fotografico Bifaz 120grs",
+          precio_unitario: 13600,
+          imagen: "Papel_fotografico_Bifaz_100hojas.webp",
+        },
+
+        {
+          id: "A7",
+          nombre: "100 Hojas Papel Fotografico 230grs",
+          precio_unitario: 13600,
+          imagen: "Papel_fotografico_230grs_100hojas.webp",
+        },
+
         // 🅑
         {
           id: "B1",
@@ -131,12 +152,20 @@ export const traerProductos = async () => {
           imagen: "papelMagnetico.webp",
         },
 
-        // 🅟
+        // J
         {
-          id: "P1",
+          id: "J1",
           nombre: "100 Hojas Tricapa Para Sublimar de 100gr",
           precio_unitario: 11400,
           imagen: "Sublimar_Tricapa_100hojas.webp",
+        },
+
+        //K
+        {
+          id: "K1",
+          nombre: "Natucraft Mokka",
+          precio_unitario: 7100,
+          imagen: "Natucraft_Mokka.webp",
         },
       ],
     };
