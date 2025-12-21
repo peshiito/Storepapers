@@ -51,6 +51,12 @@ export const traerProductos = async () => {
           precio_unitario: 13600,
           imagen: "Papel_fotografico_230grs_100hojas.webp",
         },
+        {
+          id: "A8",
+          nombre: "100 Hojas Papel Fotografico Brillante 140grs",
+          precio_unitario: 10100,
+          imagen: "Papelfotográficobrillante140g.webp",
+        },
 
         // 🅑
         {
@@ -105,6 +111,19 @@ export const traerProductos = async () => {
           precio_unitario: 11800,
           imagen: "holofan_efecto_tornasol_20hojas.jpg",
         },
+        {
+          id: "D5",
+          nombre: "Diamante Transparente",
+          precio_unitario: 14500,
+          imagen: "DiamanteTransparente.webp",
+        },
+
+        {
+          id: "D6",
+          nombre: "Burbuja Trasnparente",
+          precio_unitario: 11800,
+          imagen: "Burbuja_Trasnparente.webp",
+        },
 
         // 🅔
         {
@@ -120,6 +139,12 @@ export const traerProductos = async () => {
           imagen: "Filmilo_adhesivo_oro_antiguo_a4.webp",
         },
 
+        {
+          id: "E3",
+          nombre: "Acetato Bruma Clara",
+          precio_unitario: 8800,
+          imagen: "Acetato_BrumaClara.webp",
+        },
         // 🅕
         {
           id: "F1",
