@@ -192,6 +192,19 @@ export const traerProductos = async () => {
           precio_unitario: 7100,
           imagen: "Natucraft_Mokka.webp",
         },
+        //L
+        {
+          id: "L1",
+          nombre: "Sublistick Blanco",
+          precio: 9700,
+          imagen: "Sublistick_Blanco.webp",
+        },
+        {
+          id: "L2",
+          nombre: "Sublistick Transparente",
+          precio: 9700,
+          imagen: "Sublistick_Transparente.webp",
+        },
       ],
     };
 
