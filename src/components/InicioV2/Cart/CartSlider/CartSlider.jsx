@@ -17,12 +17,13 @@ const CartSlider = ({ visible, onClose }) => {
 
   if (!visible) return null;
 
+  // Esta función calcula el total FINAL (con o sin recargo)
   const getFinalTotal = () => {
     const baseTotal = getTotal();
     return hasRecargo ? baseTotal + RECARGO : baseTotal;
   };
 
-  // Función para generar el mensaje de WhatsApp (mover aquí toda la lógica)
+  // Función para generar el mensaje de WhatsApp
   const generateWhatsAppMessage = () => {
     const finalTotal = getFinalTotal();
 
@@ -51,11 +52,11 @@ const CartSlider = ({ visible, onClose }) => {
     return message;
   };
 
-  // Función para enviar a WhatsApp (mover aquí)
+  // Función para enviar a WhatsApp
   const sendToWhatsApp = () => {
     const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "5491128947318"; // Tu número
+    const phoneNumber = "5491128947318";
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
   };
@@ -211,14 +212,19 @@ const CartSlider = ({ visible, onClose }) => {
                     <span>Subtotal:</span>
                     <span>${formatPrice(getTotal())}</span>
                   </div>
+
+                  {/* MOSTRAR EL RECARGO SOLO SI ESTÁ ACTIVO */}
                   {hasRecargo && (
                     <div className="summary-row">
                       <span>Recargo por entrega:</span>
                       <span>+${formatPrice(RECARGO)}</span>
                     </div>
                   )}
+
+                  {/* USAR getFinalTotal() AQUÍ EN LUGAR DE getTotal() */}
                   <div className="summary-row total-row">
                     <span>Total:</span>
+                    {/* CAMBIÉ getTotal() por getFinalTotal() */}
                     <strong>${formatPrice(getFinalTotal())}</strong>
                   </div>
                 </div>
