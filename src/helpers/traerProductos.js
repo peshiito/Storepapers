@@ -86,6 +86,12 @@ export const traerProductos = async () => {
           imagen: "Matelina_bi_faz_260gr_50_hojas.webp",
         },
 
+        {
+          id: "C3",
+          nombre: "Matelina simple faz 230gr",
+          precio_unitario: 1,
+          imagen: "Matelina_simple_faz_230gr.webp",
+        },
         // 🅓
         {
           id: "D1",
