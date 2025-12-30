@@ -10,14 +10,6 @@ const formatPrice = (price) => {
   }).format(price);
 };
 
-// Función para formatear precios con decimales (para cálculos)
-const formatPriceWithDecimals = (price) => {
-  return new Intl.NumberFormat("es-AR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(price);
-};
-
 const normalizeProduct = (p) => {
   return {
     id:
@@ -107,29 +99,16 @@ export const CartProvider = ({ children }) => {
   const getTotalItems = () =>
     cart.reduce((acc, it) => acc + (Number(it.quantity) || 0), 0);
 
-  const buildWhatsAppText = (prefix = "Hola, quiero hacer un pedido:") => {
-    if (!cart.length) return `${prefix}\n\nNo hay productos en el carrito.`;
-
-    const header = `${prefix}\n\n— Detalle del pedido —\n`;
-    const lines = cart.map((it, idx) => {
-      const unit = formatPrice(Number(it.price || 0));
-      const qty = Number(it.quantity || 0);
-      const subtotal = formatPrice(Number(it.price || 0) * qty);
-      return `${idx + 1}) ${
-        it.title
-      }\n   • Cantidad: ${qty}\n   • Precio unitario: $${unit}\n   • Subtotal: $${subtotal}`;
-    });
-    const total = formatPrice(getTotal());
-    const footer = `\n-------------------------\nPrecio final: $${total}\n\nDatos de envío:\n- Nombre:\n- Dirección:\n- Teléfono:\n\nMuchas gracias.`;
-    return `${header}\n${lines.join("\n\n")}${footer}`;
-  };
-
-  const sendWhatsApp = (prefix = "Hola, quiero hacer un pedido:") => {
-    const text = buildWhatsAppText(prefix);
-    const encoded = encodeURIComponent(text);
-    const phoneNumber = "5491128947318";
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encoded}`;
-    window.open(whatsappUrl, "_blank");
+  // Esta función solo genera la estructura básica del pedido
+  // El formato específico del mensaje lo maneja CartSlider
+  const getOrderDetails = () => {
+    return cart.map((item) => ({
+      id: item.id,
+      title: item.title,
+      price: Number(item.price || 0),
+      quantity: Number(item.quantity || 0),
+      subtotal: Number(item.price || 0) * Number(item.quantity || 0),
+    }));
   };
 
   return (
@@ -142,10 +121,8 @@ export const CartProvider = ({ children }) => {
         clearCart,
         getTotal,
         getTotalItems,
-        buildWhatsAppText,
-        sendWhatsApp,
-        formatPrice,
-        formatPriceWithDecimals,
+        getOrderDetails,
+        formatPrice, // Solo la función de formato
       }}
     >
       {children}
