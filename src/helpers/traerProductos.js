@@ -89,7 +89,7 @@ export const traerProductos = async () => {
         {
           id: "C3",
           nombre: "Matelina simple faz 230gr",
-          precio_unitario: 1,
+          precio_unitario: 14000,
           imagen: "Matelina_simple_faz_230gr.webp",
         },
         // 🅓
